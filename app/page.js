@@ -23,13 +23,13 @@ export default function Home() {
       </div>
       <div className={`p-4 lg:p-32`}>
         <div className={` flex flex-col items-center text-center `}>
-          <div className={` flex flex-col font-sans font-bold text-3xl lg:text-6xl`}>
+          <div className={` flex flex-col font-sans font-bold text-3xl lg:text-6xl`}>{`
               Discover GitHub repositories like never before 
-              and explore the world of open source
+              and explore the world of open source`}
           </div>
-          <div className={`font-medium md:text-[22px] text-gray-600 mt-7`}>
+          <div className={`font-medium md:text-[22px] text-gray-600 mt-7`}>{`
             Search, explore, and stay connected with the 
-            world's largest community of developers 
+            world's largest community of developers `}
           </div>
         </div>
 

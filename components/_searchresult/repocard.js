@@ -13,7 +13,7 @@ export const RepoCard = (repo) => {
     return(
         <div className={`flex flex-col justify-between w-72 h-80 bg-white border-[1px] rounded-lg border-gray-200 shadow-sm p-2 m-4 cursor-pointer hover:scale-105 transition-ease-in-out duration-200 `} onClick={() => setShowModal(true)} >
             <div className={`flex flex-col justify-between `}>
-                <img title="Reposistory Image" src={`${repo.owner?.avatar_url}`} className={`object-cover rounded-lg w-full h-20 peer-hover:h-32 `} />
+                <img alt="Repository Image" title="Reposistory Image" src={`${repo.owner?.avatar_url}`} className={`object-cover rounded-lg w-full h-20 peer-hover:h-32 `} />
                 <div title={`Repository Name - ${repo.name}`} className={`mt-2 text-sm font-medium text-gray-700`}>
                     {repo.name} 
                 </div>
