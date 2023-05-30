@@ -15,6 +15,7 @@ const branchcolors = {
     "develop": "bg-blue-700",
     "dev": "bg-blue-700",
     "staging": "bg-purple-700",
+    "other": "bg-orange-700"
 }
 
 const DetailModal = ({leftSideContent, rightSideContent, open, setOpen, repo, }) => {
@@ -23,17 +24,17 @@ const DetailModal = ({leftSideContent, rightSideContent, open, setOpen, repo, })
    useEffect(() => {
        const getRepoCommits = async () => {
               try{
-                const res = await fetch(`https://api.github.com/repos/${repo.owner?.login}/${repo.name}/commits`)
+                const res = await fetch(`https://api.github.com/repos/${repo.owner?.login}/${repo.name}/commits?order=desc`)
                 const data = await res.json()
                 setRepoCommits(data)
-                console.log(data)
               }catch(err) {
                 console.log(err)
               }
          }
             getRepoCommits()
 
-   }, [])
+   }, [repo?.name])
+
     return (
         <Modal
             open={true}
@@ -47,7 +48,9 @@ const DetailModal = ({leftSideContent, rightSideContent, open, setOpen, repo, })
                                 {repo?.full_name}
                             </div>
                             <div>
-                                <Tag className={`text-xs text-white font-medium ${branchcolors[repo.default_branch]}`}>
+                                <Tag className={`text-xs text-white font-medium 
+                                    ${branchcolors[repo.default_branch] || branchcolors["other"] }
+                                `}>
                                     {repo.default_branch}
                                 </Tag>
                                 {repo?.private ?(
@@ -117,9 +120,24 @@ const DetailModal = ({leftSideContent, rightSideContent, open, setOpen, repo, })
                 </div>
             }
         >
-            <div className={`flex flex-col justify-between w-full h-full p-2 m-4  `}>
-                <div className={`flex flex-col justify-between `}>
-                  <CommitCard commit={repoCommits[0]} />
+            <div className={`flex flex-col justify-between w-full h-full px-3  `}>
+                <div>
+                    <span className={`text-sm font-medium text-gray-700`}>
+                        Git Commit History: ({repoCommits?.length})
+                    </span>
+                </div>
+                <div className={`flex flex-col flex-wrap justify-between overflow-auto `}>
+                  {repoCommits.length > 0 ? (
+                       <div>
+                         {repoCommits.map((commit, index) => (
+                            <CommitCard key={index} commit={commit} />
+                         ))}
+                       </div>
+                  ) : (
+                        <div className={`text-sm font-medium text-gray-700`}>
+                            No commits found!
+                        </div>
+                  )}
                 </div>
 
               

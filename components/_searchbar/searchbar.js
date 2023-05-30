@@ -11,6 +11,7 @@ export const SearchBar = ({ onSearch }) => {
         setSearch(e.target.value)
     }
 
+
  
     useEffect(() => {
         onSearch(debouncedSearchTerm) 
@@ -41,6 +42,7 @@ export const SearchBar = ({ onSearch }) => {
                     Search
                 </span>
             </button>
+
         </div>
     )
 }

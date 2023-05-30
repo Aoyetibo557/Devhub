@@ -6,20 +6,9 @@ import { HiOutlineExternalLink } from 'react-icons/hi'
 import { convertToRelativeTime }   from '../../lib/utils/formatdate';
 import DetailModal from "../Utility/_modal/detailmodal"
 
-/**
- * repo name
- * language
- * description
- * star count
- * fork count
- * date created
- */
 
 export const RepoCard = (repo) => {
     const [showModal, setShowModal] = useState(false);
-    
-
-
 
     return(
         <div className={`flex flex-col justify-between w-72 h-80 bg-white border-[1px] rounded-lg border-gray-200 shadow-sm p-2 m-4 cursor-pointer hover:scale-105 transition-ease-in-out duration-200 `} onClick={() => setShowModal(true)} >

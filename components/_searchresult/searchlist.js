@@ -19,9 +19,6 @@ const SearchResultList = ({result, isLoading}) => {
         </div>
     ): (
         <div className={`flex flex-row flex-wrap`}>
-            {/* {resultType === 'user' && result?.map((item) => (
-                <StatsCard key={item.id} {...item} />
-            ))} */}
             { result?.map((item) => (
                 <RepoCard key={item.id} {...item} />
             ))}

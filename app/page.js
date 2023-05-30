@@ -9,12 +9,12 @@ import SearchResultList from "../components/_searchresult/searchlist";
 
 export default function Home() {
   const [search, setSearch] = useState('')
-
   const { loading, error, result: searchResult } = useGihubSearch(search)
 
   const handleSearch = (search) => {
     setSearch(search)    
   }
+
 
   return (
     <main className="px-10 mt-10">
